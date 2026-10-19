@@ -1,0 +1,601 @@
+/* ==========================================================================
+   1. REGRAS BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ffffff;
+    color: #334155;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO FIXO E HERO
+   ========================================================================== */
+.cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.espacador-topo {
+    height: 80px;
+}
+
+.barra-navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0284c7;
+}
+
+.links-navegacao {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.links-navegacao a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.links-navegacao a:hover {
+    color: #38bdf8;
+}
+
+@media (max-width: 768px) {
+    .links-navegacao {
+        display: none;
+    }
+    .barra-navegacao {
+        justify-content: center;
+    }
+}
+
+.hero-apresentacao {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.apresentacao {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .apresentacao {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+}
+
+.simbolo-fluor {
+    width: 140px;
+    height: 140px;
+    border: 3px solid #38bdf8;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.simbolo-fluor .texto-extra {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #38bdf8;
+    line-height: 1;
+}
+
+.simbolo-fluor .numero-atomo {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.tag {
+    display: inline-block;
+    color: #38bdf8;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.descricao-inicial {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 600px;
+    margin-bottom: 1.8rem;
+}
+
+.botao {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: #0284c7;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.botao:hover {
+    background-color: #0369a1;
+    transform: translateY(-2px);
+}
+
+/* SECÇÃO DE IMAGEM */
+.secao-imagem {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.caixa-imagem-fluor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-fluor {
+    width: 100%;
+    max-width: 500px;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    padding: 10px;
+}
+
+.legenda-imagem {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 0.8rem;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA UNIFICADA DAS SECÇÕES
+   ========================================================================== */
+.conteudo {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+}
+
+.secao {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.secao-alerta {
+    border-left: 4px solid #d97706;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-secao .texto-extra {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0284c7;
+    background-color: rgba(2, 132, 199, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+}
+
+.titulo-secao h2 {
+    font-size: 1.6rem;
+    color: #0f172a;
+}
+
+/* ==========================================================================
+   4. COMPONENTES INTERNOS DAS SECÇÕES
+   ========================================================================== */
+.caixa-sobre p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #475569;
+}
+
+.caixa-sobre p:last-child {
+    margin-bottom: 0;
+}
+
+.grade-caracteristicas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.cartao-caracteristica {
+    background-color: #ffffff;
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.cartao-caracteristica .destaque {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 0.2rem;
+}
+
+.grade-localizacao {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.cartao-localizacao {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.cartao-localizacao:hover {
+    transform: translateY(-3px);
+}
+
+.cartao-localizacao .icone {
+    font-size: 1.8rem;
+    color: #0284c7;
+    margin-bottom: 0.5rem;
+}
+
+.cartao-localizacao h3 {
+    margin-bottom: 0.4rem;
+    color: #0f172a;
+}
+
+.cartao-localizacao p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.conteudo-saude {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.destaque-saude {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.destaque-saude .numero-grande {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0284c7;
+}
+
+.destaque-saude h3 {
+    color: #0f172a;
+}
+
+.texto-saude p {
+    margin-bottom: 0.8rem;
+    color: #475569;
+}
+
+.texto-saude p:last-child {
+    margin-bottom: 0;
+}
+
+.caixa-agua {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+}
+
+.simbolo-agua {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0284c7;
+    background-color: rgba(2, 132, 199, 0.1);
+    padding: 1rem;
+    border-radius: 50%;
+    min-width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.caixa-agua p {
+    color: #475569;
+    margin-bottom: 0.8rem;
+}
+
+.caixa-agua p:last-child {
+    margin-bottom: 0;
+}
+
+.lista-utilizacoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.item-utilizacao {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.item-utilizacao .texto-extra {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 0.3rem;
+}
+
+.item-utilizacao h3 {
+    margin-bottom: 0.4rem;
+    color: #0f172a;
+}
+
+.item-utilizacao p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   5. SEÇÕES: DOCENTES E DESENVOLVEDOR (FOTOS RETANGULARES MAIORES)
+   ========================================================================== */
+.grade-docentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.cartao-docente {
+    background-color: #ffffff;
+    padding: 1.8rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.cartao-docente:hover {
+    transform: translateY(-4px);
+}
+
+/* Formato Retangular Maior para Docentes */
+.foto-container.retangular {
+    width: 140px;
+    height: 180px;
+    margin: 0 auto 1.2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
+.foto-perfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cartao-docente h3 {
+    color: #0f172a;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.badge-materia {
+    display: inline-block;
+    background-color: rgba(2, 132, 199, 0.1);
+    color: #0284c7;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+}
+
+.cartao-docente p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+/* Seção Desenvolvedor (Formato Retangular Maior) */
+.card-desenvolvedor {
+    background-color: #ffffff;
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+    .card-desenvolvedor {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.foto-container-dev.retangular {
+    width: 130px;
+    height: 170px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #0284c7;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+}
+
+.foto-perfil-dev {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-dev h3 {
+    color: #0f172a;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.cargo-dev {
+    color: #0284c7;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.info-dev p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+/* Cuidados / Alerta */
+.caixa-cuidados {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    background-color: #fffbeb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #fef3c7;
+    flex-wrap: wrap;
+}
+
+.icone-alerta {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.15);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.caixa-cuidados h3 {
+    color: #b45309;
+    margin-bottom: 0.4rem;
+}
+
+.caixa-cuidados p {
+    color: #475569;
+    margin-bottom: 0.8rem;
+}
+
+.caixa-cuidados p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   6. RODAPÉ
+   ========================================================================== */
+footer {
+    max-width: 900px;
+    margin: 2rem auto 0 auto;
+    padding: 2.5rem 1rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.titulo-rodape {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #0284c7;
+    margin-bottom: 0.3rem;
+}
+
+footer p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.referencias h3 {
+    font-size: 0.95rem;
+    color: #0f172a;
+    margin-bottom: 0.3rem;
+}
